@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 // Every visible string lives here so it can be matched to the design images in one place.
 const TEXT = {
   title: "Alphabet Buttons",
-  subtitle: "Click the buttons to type",
+  subtitle: "Click letters to type",
   backspace: "Backspace",
 };
 
