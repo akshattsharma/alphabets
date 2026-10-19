@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 
 // Every visible string lives here so it can be matched to the design images in one place.
 const TEXT = {
-  title: "Alphabets",
+  title: "Alphabet Buttons",
+  subtitle: "Click the buttons to type",
   backspace: "Backspace",
 };
 
@@ -31,6 +32,7 @@ export default function App() {
   return (
     <main className="app">
       <h1>{TEXT.title}</h1>
+      <p className="subtitle">{TEXT.subtitle}</p>
 
       <div className="output">{text}</div>
 
