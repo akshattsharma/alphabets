@@ -1,38 +1,12 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+:root { --bg: #f4f6fb; --ink: #1d2433; --accent: #3b5bdb; --line: #dfe3ee; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app { max-width: 640px; margin: 0 auto; padding: 32px 16px 56px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
+h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.2rem); letter-spacing: -0.02em; }
+.output { width: 100%; min-height: 64px; padding: 14px 16px; background: #fff; border: 1px solid var(--line); border-radius: 12px; font-size: 1.6rem; letter-spacing: 0.08em; overflow-wrap: anywhere; }
+.keys { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.key, .backspace { min-width: 48px; height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
+.key:hover { background: #e8edff; border-color: var(--accent); }
+.key:active { transform: translateY(1px); }
+.backspace { background: var(--accent); border-color: var(--accent); color: #fff; }
+.key:focus-visible, .backspace:focus-visible { outline: 3px solid #9db0ff; outline-offset: 2px; }

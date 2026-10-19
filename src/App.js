@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
 
-function App() {
+// Every visible string lives here so it can be matched to the design images in one place.
+const TEXT = {
+  title: "Alphabets",
+  backspace: "Backspace",
+};
+
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+export default function App() {
+  const [text, setText] = useState("");
+
+  const add = (letter) => setText((t) => t + letter);
+  const remove = () => setText((t) => t.slice(0, -1));
+
+  // The physical keyboard works too.
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "Backspace") {
+        remove();
+      } else if (/^[a-zA-Z]$/.test(e.key)) {
+        add(e.key.toUpperCase());
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="app">
+      <h1>{TEXT.title}</h1>
+
+      <div className="output">{text}</div>
+
+      <div className="keys">
+        {LETTERS.map((l) => (
+          <button type="button" key={l} className="key" onClick={() => add(l)}>
+            {l}
+          </button>
+        ))}
+        <button type="button" className="backspace" onClick={remove}>
+          {TEXT.backspace}
+        </button>
+      </div>
+    </main>
   );
 }
-
-export default App;
